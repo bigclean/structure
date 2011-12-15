@@ -1,14 +1,16 @@
 Introduction
 ==============
 
-Personal simple data structures practice.
+Simple data structures practice.
 
 What included
 ==============
 
 * c version, list(two implementions), stack and binary tree only.
 
-* java version, list, stack and binary tree only
+* java version, list, stack and binary tree only.
+
+* objective c version, list only.
 
 Note
 =============
@@ -24,5 +26,3 @@ Todo
 * Add general tree.
 
 * Add ant build for java version.
-
-<!-- vim: set syntax=mkd: ->
