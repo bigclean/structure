@@ -34,29 +34,11 @@
 
 - (void)dealloc;
 
-/*!
- * \code
- *  @property (retain) id obj;
- * \endcode
- */
-- (id)obj;
-- (void)setObj:(id)anObject;
+@property (retain) id obj;
 
-/*!
- * \code
- *  @property (retain) NSLinkNode *prev;
- * \endcode
- */
-- (NSLinkNode *)prev;
-- (void)setPrev:(NSLinkNode *)aNode;
+@property (retain) NSLinkNode *prev;
 
-/*!
- * \code
- *  @property (retain) NSLinkNode *next;
- * \endcode
- */
-- (NSLinkNode *)next;
-- (void)setNext:(NSLinkNode *)aNode;
+@property (retain) NSLinkNode *next;
 
 - (NSString *)description;
 

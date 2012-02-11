@@ -45,47 +45,9 @@
   [super dealloc];
 }
 
-/*!
- * \code
- *  @synthesize head;
- * \endcode
- */
-- (NSLinkNode *)head {
-  return head;
-}
-- (void)setHead:(NSLinkNode *)aNode {
-  if (head != aNode) {
-    [head release];
-    head = [aNode retain];
-  }
-}
-
-/*!
- * \code
- *  @synthesize tail;
- * \endcode
- */
-- (NSLinkNode *)tail {
-  return tail;
-}
-- (void)setTail:(NSLinkNode *)aNode {
-  if (tail != aNode) {
-    [tail release];
-    tail = [aNode retain];
-  }
-}
-
-/*!
- * \code
- *  @synthesize length;
- * \endcode
- */
-- (unsigned int)length {
-  return length;
-}
-- (void)setLength:(unsigned int)listLength {
-  length = listLength;
-}
+@synthesize head;
+@synthesize tail;
+@synthesize length;
 
 - (void)insertBefore:(NSLinkNode *)nextNode insertedObject:(id)anObject {
   NSLinkNode *newNode  = [[NSLinkNode alloc] initWithObject:anObject];

@@ -40,50 +40,9 @@
   NSLog(@"Deaclloc node success.");
 }
 
-/*!
- * \code
- *  @synthesize obj;
- * \endcode
- */
-- (id)obj {
-  return obj;
-}
-- (void)setObj:(id)anObject {
-  if (obj != anObject) {
-    [obj release];
-    obj = [anObject retain];
-  }
-}
-
-/*!
- * \code
- *  @synthesize prev;
- * \endcode
- */
-- (NSLinkNode *)prev {
-  return prev;
-}
-- (void)setPrev:(NSLinkNode *)aNode {
-  if (prev != aNode) {
-    [prev release];
-    prev = [aNode retain];
-  }
-}
-
-/*!
- * \code
- *  @synthesize next;
- * \endcode
- */
-- (NSLinkNode *)next {
-  return next;
-}
-- (void)setNext:(NSLinkNode *)aNode {
-  if (next != aNode) {
-    [next release];
-    next = [aNode retain];
-  }
-}
+@synthesize obj;
+@synthesize prev;
+@synthesize next;
 
 - (NSString *)description {
   NSString *desc;

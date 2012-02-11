@@ -33,29 +33,9 @@
 
 - (void)dealloc;
 
-/*!
- * \code
- *  @property (retain) NSLinkNode *head;
- * \endcode
- */
-- (NSLinkNode *)head;
-- (void)setHead:(NSLinkNode *)aNode;
-
-/*!
- * \code
- *  @property (retain) NSLinkNode *tail;
- * \endcode
- */
-- (NSLinkNode *)tail;
-- (void)setTail:(NSLinkNode *)aNode;
-
-/*!
- * \code
- *  @property int length;
- * \endcode
- */
-- (unsigned int)length;
-- (void)setLength:(unsigned int)listLength;
+@property (retain) NSLinkNode *head;
+@property (retain) NSLinkNode *tail;
+@property unsigned int length;
 
 - (void)insertBefore:(NSLinkNode *)nextNode insertedObject:(id)anObject;
 
