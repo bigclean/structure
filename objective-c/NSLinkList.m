@@ -76,31 +76,11 @@
 }
 
 - (void)pushFront:(id)anObject {
-  NSLinkNode *newNode  = [[NSLinkNode alloc] initWithObject:anObject];
-  NSLinkNode *nextNode = [head next];
-
-  [newNode setNext:nextNode];
-  [newNode setPrev:head];
-
-  // head node refers to newNode
-  [head     setNext:newNode];
-  [nextNode setPrev:newNode];
-
-  length++;
+  [self insertBefore:[[self head] next] insertedObject:anObject];
 }
 
 - (void)pushBack:(id)anObject {
-  NSLinkNode *newNode  = [[NSLinkNode alloc] initWithObject:anObject];
-  NSLinkNode *prevNode = [tail prev];
-
-  [newNode setNext:tail];
-  [newNode setPrev:prevNode];
-
-  // tail node refers to newNode
-  [tail     setPrev:newNode];
-  [prevNode setNext:newNode];
-
-  length++;
+  [self insertAfter:[[self tail] prev] insertedObject:anObject];
 }
 
 - (void)removeNode:(NSLinkNode *)aNode {
