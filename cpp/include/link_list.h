@@ -4,7 +4,7 @@
 // Description: double link list header file
 // Author: Bigclean Cheng
 // Created: Sat Dec 17, 23:48 2011
-// Last-Updated: Sun Dec 18, 19:26 2011
+// Last-Updated: Sun Dec 18, 21:43 2011
 // 
 
 // Code:
@@ -119,17 +119,20 @@ class LinkList
         // iterators accessors for LinkList
         //!
         //! \note the range between begin() and end() is half-open
-        //!        range, so it's [head->GetNext(), tail) in `LinkList.
+        //!        range, so it's [head->GetNext(), tail] in `LinkList.
         //!
         iterator begin(void);
         //!
         //! \note because iteraor always past-the-end, so in `LinkList
-        //!       class is tail node which is located after last node.
+        //!       class end node is located after last valid node, it's
+        //!       could be treated as an alias of tail node in this version.
+        //!
         iterator end(void);
 
         // callbacks
         // how to use function pointer to memember functions, even
         // functors?
+        // see also: http://www.newty.de/fpt/callback.html/
         typedef void (*LinkNodeCallback)(LinkNode<T> *aNode);
         static void Foreach(LinkList<T> *theList, LinkNodeCallback callbackFunc);
 
@@ -281,14 +284,12 @@ template <typename T>
 void LinkList<T>::PushFront(const T &anObject)
 {
         InsertBefore(Front(), anObject); // different implementaion with c version
-        length++;
 }
 
 template <typename T>
 void LinkList<T>::PushBack(const T &anObject)
 {
         InsertAfter(Back(), anObject); // different implementaion with c version
-        length++;
 }
 
 template <typename T>
