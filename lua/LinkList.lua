@@ -4,34 +4,38 @@
 -- Description: double link list demo in Lua
 -- Author: Bigclean Cheng
 -- Created: Thu Mar 08 23:30 2012
--- Last-Updated: Thu Mar 08 23:30 2012
+-- Last-Updated: Sun Apr 08 23:03 2012
 
 -- Code:
 
 -- create an empty table
 -- assign member functions
-LinkList = {}
+LinkList    = {}
+LinkList.mt = {}
+setmetatable(LinkList, LinkList.mt)
 
 -- class functions
 function LinkList:new()
-    -- table 'core' to store head and tail node when constructing
-    local core = {
+    -- table 'list' to store head and tail node when constructing
+    local list = {
                   head = {prev = nil, obj = "Head Node"},
                   tail = {next = nil, obj = "Tail node"}
               }
 
     -- concatenate head and tail node
     print("Concatenating head and tail nodes...")
-    core.head.next = core.tail
-    core.tail.prev = core.head
+    list.head.next = list.tail
+    list.tail.prev = list.head
 
     --[[
-    using annonymous metatable as metatable of 'core' table
+    using LinkList.mt table as metatable of 'list' table
     inheriting member functions of global table 'LinkList'.
     --]]
-    setmetatable(core, {__index = LinkList})
+    -- binding functions
+    LinkList.mt.__index = LinkList
+    setmetatable(list, LinkList.mt)
 
-    return core
+    return list
 end
 
 function LinkList:front()
@@ -113,6 +117,18 @@ function LinkList:removeAllNodes()
     end
 end
 
+function LinkList:tostring()
+    local str = "{"
+    local sep = ""
+
+    for element in self:iter() do
+        str = str .. sep .. element.obj
+        sep = ", "
+    end
+
+    return str .. "}"
+end
+
 -- iterator implemented in closure
 function LinkList:iter()
     --[[
@@ -130,5 +146,8 @@ function LinkList:iter()
         end
     end
 end
+
+-- FIXME: binding always after definion
+LinkList.mt.__tostring = LinkList.tostring
 
 -- LinkList.lua ends here
